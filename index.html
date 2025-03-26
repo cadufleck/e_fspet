@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E-commerce - e_fspet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Cabeçalho fixo -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <h1>e_fspet</h1>
+      </div>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Pesquisar..." oninput="handleSearch()"/>
+      </div>
+      <div class="category-filter">
+        <select id="category-select" onchange="handleCategoryFilter()">
+          <!-- Opções de categoria serão populadas via JS -->
+        </select>
+      </div>
+    </div>
+    <div class="header-right">
+      <div id="cart-icon" onclick="toggleCart()">
+        <span id="cart-count">0</span>
+        <img src="images/cart.png" alt="Carrinho" class="cart-img"/>
+      </div>
+    </div>
+  </header>
+
+  <!-- Área principal -->
+  <main>
+    <!-- Seção de produtos -->
+    <section id="products-grid" class="products-grid">
+      <!-- Cards de produtos serão inseridos dinamicamente -->
+    </section>
+  </main>
+
+  <!-- Modal do Carrinho -->
+  <div id="cart-modal" class="cart-modal">
+    <div class="cart-modal-content">
+      <span class="close" onclick="toggleCart()">&times;</span>
+      <h2>Carrinho</h2>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-summary">
+        <h3 id="cart-total">Total: R$ 0,00</h3>
+        <button class="clear-cart-btn" onclick="clearCart()">Limpar Carrinho</button>
+        <button class="checkout-btn" onclick="sendWhatsApp()">Enviar via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para adicionar quantidade antes de colocar no carrinho -->
+  <div id="product-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeProductModal()">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
