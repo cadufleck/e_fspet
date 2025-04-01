@@ -29,11 +29,14 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 30px;
+  padding: 25px 30px; /* Aumenta o padding para dar mais espaço */
+  /* Ou defina uma altura mínima */
+  min-height: 100px;
 }
 
+
 .logo-img {
-  height: 40px;
+  height: 60px;
   width: auto;
 }
 
@@ -44,14 +47,14 @@ a {
 }
 
 #search-input {
-  padding: 8px 12px;
+  padding: 12px 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
   width: 200px;
 }
 
-#category-select {
-  padding: 8px 12px;
+#category-select, #subcategory-select {
+  padding: 12px 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
@@ -81,34 +84,89 @@ a {
   align-items: center;
 }
 
+/* Cabeçalho das categorias e subcategorias */
+.category-header {
+  background-color: #f1f1f1;
+  padding: 10px 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.subcategory-header {
+  background-color: #e1e1e1;
+  padding: 8px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.category-title,
+.subcategory-title {
+  text-align: center;
+}
+.category-title h2 {
+  font-family: 'Arial', sans-serif; /* Define a fonte desejada */
+  font-size: 35px;                  /* Ajusta o tamanho da fonte */
+  color: #333;                      /* Altera a cor da fonte */
+  font-weight: bold;                /* Define a espessura da fonte */
+  text-align: center;               /* Centraliza o texto */
+}
+
+.subcategory-title h3 {
+  font-family: 'Arial', sans-serif;
+  font-size: 25px;
+  color: #555;
+  font-weight: normal;
+  text-align: center;
+}
+
+
+
 /* Grid de produtos */
 .products-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 imagens por linha */
-  gap: 20px; /* Espaço entre os produtos */
   padding: 20px;
 }
 
+.category-section {
+  margin-bottom: 40px; /* Espaço entre as categorias */
+}
+
+.subcategory-products {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Exibe 6 produtos por linha */
+  gap: 15px;
+  padding: 20px 0;
+}
+
+
+
+/* Cartões de produto */
 .product-card {
-  background-color: #fff;
+  background-color: hwb(0 100% 0%);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
   padding: 20px;
+  text-align: center;
+  transition: box-shadow 0.3s;
+  width: 100%;
 }
 
 .product-card:hover {
-  transform: translateY(-10px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .product-card img {
-  width: 100%; /* Garante que a imagem ocupe toda a largura do contêiner */
-  height: 250px; /* Ajuste a altura para que as imagens fiquem retangulares e verticais */
-  object-fit: contain; /* Garante que a imagem não seja cortada e fique dentro do espaço */
-  border-radius: 8px; /* Borda arredondada */
+  width: 100%;
+  height: 250px; /* Garantir que as imagens ocupem o mesmo espaço */
+  object-fit: contain;
+  border-radius: 8px;
 }
+
 
 .product-name {
   font-size: 18px;
@@ -123,8 +181,8 @@ a {
 }
 
 .add-to-cart-btn {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #f8da45;
+  color: rgb(0, 0, 0);
   padding: 12px 20px;
   border: none;
   border-radius: 5px;
@@ -135,239 +193,188 @@ a {
 }
 
 .add-to-cart-btn:hover {
-  background-color: #45a049;
+  background-color: #00000000;
 }
 
-/* Modal do carrinho */
-.cart-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 100;
+/* Estilização atualizada para os modais */
+
+/* Estilização dos modais (compartilhada para produto e carrinho) */
+.modal, .cart-modal {
+  display: none; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: rgba(0, 0, 0, 0.5); 
+  align-items: center; 
+  justify-content: center;
+  z-index: 1000;
 }
 
-/* Ajustes para permitir rolagem dentro do carrinho */
-.cart-items {
-  max-height: 400px;  /* Define a altura máxima para o contêiner de itens */
-  overflow-y: auto;   /* Permite rolagem vertical quando os itens excedem a altura */
-  padding-right: 10px; /* Adiciona espaço à direita para a barra de rolagem */
-}
-
-
-.cart-item-img {
-  width: 100px; /* Ajuste o valor conforme necessário */
-  height: 100px; /* Ajuste o valor conforme necessário */
-  object-fit: cover; /* Garante que a imagem não distorça */
-  border-radius: 8px; /* Borda arredondada para uma aparência mais suave */
-}
-
-
-.cart-modal-content {
-  background-color: #fff;
+.modal-content, .cart-modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
   width: 90%;
   max-width: 500px;
-  margin: 100px auto;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease-out;
 }
 
-.cart-modal-content .close {
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.close {
   position: absolute;
   top: 10px;
   right: 15px;
-  font-size: 30px;
+  font-size: 24px;
   cursor: pointer;
-  color: #aaa;
-  transition: color 0.2s;
 }
 
-.cart-modal-content .close:hover {
-  color: #555;
+/* Estilização dos itens do carrinho */
+/* Limite de altura e rolagem no container de itens do carrinho */
+.cart-items {
+  max-height: 300px;      /* Ajuste a altura conforme desejado */
+  overflow-y: auto;       /* Exibe barra de rolagem quando ultrapassa a altura */
+  padding-right: 8px;     /* Espaço para a rolagem não sobrepor o texto */
 }
 
-/* Ajuste o layout do item no carrinho usando Flexbox */
+/* Cada item do carrinho em linha */
 .cart-item {
   display: flex;
-  align-items: center; /* Alinha os itens verticalmente ao centro */
-  gap: 15px; /* Espaço entre a imagem e as informações */
-  margin-bottom: 15px; /* Espaço entre os itens do carrinho */
-  padding: 15px;
-  border-bottom: 1px solid #ddd; /* Linha separadora entre os itens */
+  align-items: center;      /* Alinha verticalmente no centro */
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 8px;
 }
 
-.cart-item-img {
-  width: 120px;  /* Tamanho da imagem, ajuste conforme necessário */
-  height: 120px; /* Tamanho da imagem, ajuste conforme necessário */
-  object-fit: cover; /* Garante que a imagem não distorça */
-  border-radius: 8px; /* Borda arredondada para a imagem */
+/* Último item sem borda */
+.cart-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
 }
 
+/* Miniatura da imagem do carrinho */
+.cart-item-thumbnail {
+  width: 80px;    /* Aumente/diminua conforme desejado */
+  height: 80px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+/* Bloco com nome e preço */
 .cart-item-info {
+  flex-grow: 1;   /* Ocupa o espaço disponível */
+  margin-left: 10px;
+}
+
+/* Controle de quantidade em linha */
+.quantity-controls {
   display: flex;
-  flex-direction: column; /* Organiza as informações do produto em uma coluna */
-  gap: 5px; /* Espaçamento entre as informações */
+  align-items: center;
+  gap: 5px;
 }
 
-.cart-item-name {
-  font-size: 16px;
-  font-weight: bold;
+/* Botão de remover item */
+.remove-item-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #f44336;
+  margin-left: 10px;
 }
 
-.cart-item-ref, .cart-item-price {
-  font-size: 15px;
-  color: #555;
+
+
+.cart-item-thumbnail {
+  width: 120px;
+  height: 120 px;
+  object-fit: contain;
+  margin-right: 10px;
 }
 
-.cart-item-controls input[type="number"] {
-  width: 60px;  /* Ajuste a largura do campo de quantidade */
-  height: 40px; /* Ajuste a altura do campo de quantidade */
-  text-align: center;  /* Centraliza o número dentro da caixa */
-  font-size: 16px; /* Ajusta o tamanho da fonte */
-  border: 1px solid #ddd; /* Adiciona borda fina */
-  border-radius: 5px; /* Borda arredondada */
-  padding: 5px; /* Espaçamento interno */
-  margin: 0 10px; /* Espaçamento à esquerda e à direita */
+.cart-item-details {
+  display: flex;
+  flex-direction: column;   /* Organiza as infos em coluna (nome, preço, etc.) */
+  flex-grow: 1;             /* Permite que o bloco de detalhes ocupe o espaço restante */
 }
 
-.cart-item-controls button {
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantity-controls button {
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+.remove-item-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #f44336;
+}
+
+
+/* Conteúdo dos modais */
+.modal-content, .cart-modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Animação de fade-in para os modais */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Botão de fechar para os modais */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* (Opcional) Estilização extra para os botões dentro dos modais */
+button {
   padding: 10px 15px;
-  background-color: #f4f4f4;
-  border: 1px solid #ddd;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+  background-color: #4CAF50;
+  color: #fff;
   transition: background-color 0.3s;
 }
 
-.cart-item-controls button:hover {
-  background-color: #ddd;
+/* Estilo para os ícones de cor nas variações */
+.color-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 5px;
+  border: 1px solid #ccc;
 }
 
-.cart-summary {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.cart-summary h3 {
-  font-size: 18px;
-}
-
-.clear-cart-btn, .checkout-btn {
-  background-color: #f44336;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  width: 100%;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.checkout-btn {
-  background-color: #25D366;
-}
-
-.checkout-btn:hover {
-  background-color: #1ebe5b;
-}
-
-.clear-cart-btn:hover {
-  background-color: #e53935;
-}
-
-/* Modal de quantidade */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1100;
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 100px auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 400px;
-  border-radius: 8px;
-  position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content .close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 28px;
-  color: #aaa;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.modal-content .close:hover {
-  color: #555;
-}
-
-#modal-body {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.modal-product-info {
-  text-align: center;
-}
-
-.modal-product-info h2 {
-  margin-bottom: 10px;
-  font-size: 22px;
-  color: #333;
-}
-
-.modal-product-info p {
-  margin: 5px 0;
-  color: #666;
-}
-
-.modal-qty-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.modal-qty-container label {
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.modal-qty-container input[type="number"] {
-  width: 80px;
-  padding: 5px;
-  text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.modal-add-btn {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.modal-add-btn:hover {
+button:hover {
   background-color: #45a049;
 }
+

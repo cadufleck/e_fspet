@@ -19,6 +19,10 @@
         <select id="category-select" onchange="handleCategoryFilter()">
           <!-- Categorias serão inseridas via JS -->
         </select>
+        <!-- Filtro de subcategoria -->
+        <select id="subcategory-select" onchange="handleCategoryFilter()">
+          <!-- Subcategorias serão inseridas via JS -->
+        </select>
         <div id="cart-icon" onclick="toggleCart()">
           <span id="cart-count">0</span>
           <img src="images/cart.png" alt="Carrinho" class="cart-img"/>
@@ -29,36 +33,46 @@
 
   <!-- Área principal -->
   <main>
+    <!-- Título de categoria/subcategoria dinâmico -->
+    <div id="category-header" class="category-header">
+      <h2>Selecione uma categoria e subcategoria</h2>
+    </div>
+
     <div id="products-grid" class="products-grid">
-      <!-- Produtos serão carregados via JS -->
+      <!-- Produtos carregados via JS -->
     </div>
 
     <div class="pdf-generator">
       <button id="generate-pdf-btn" onclick="generatePDF()">Gerar PDF do Catálogo</button>
     </div>
   </main>
-
-  <!-- Modal do Carrinho -->
-  <div id="cart-modal" class="cart-modal">
-    <div class="cart-modal-content">
-      <span class="close" onclick="toggleCart()">&times;</span>
-      <h2>Carrinho</h2>
-      <div id="cart-items" class="cart-items"></div>
-      <div class="cart-summary">
-        <h3 id="cart-total">Total: R$ 0,00</h3>
-        <button class="clear-cart-btn" onclick="clearCart()">Limpar Carrinho</button>
-        <button class="checkout-btn" onclick="sendWhatsApp()">Enviar via WhatsApp</button>
-      </div>
-    </div>
-  </div>
-
+  
   <!-- Modal para adicionar quantidade antes de colocar no carrinho -->
-  <div id="product-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeProductModal()">&times;</span>
-      <div id="modal-body"></div>
+<div id="product-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProductModal()">&times;</span>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- Modal do Carrinho -->
+<div id="cart-modal" class="cart-modal">
+  <div class="cart-modal-content">
+    <span class="close" onclick="toggleCart()">&times;</span>
+    <h2>Carrinho</h2>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-summary">
+      <h3 id="cart-total">Total: R$ 0,00</h3>
+      <button class="clear-cart-btn" onclick="clearCart()">Limpar Carrinho</button>
+      <button class="checkout-btn" onclick="sendWhatsApp()">Enviar via WhatsApp</button>
     </div>
   </div>
+</div>
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <script src="script.js"></script>
 </body>
