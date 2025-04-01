@@ -144,23 +144,27 @@ a {
 
 /* Cartões de produto */
 .product-card {
-  background-color: hwb(0 100% 0%);
+  background-color: #fff; /* Alterado para fundo branco para destacar a imagem */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 10px; /* Reduzido o padding para enfatizar a imagem */
   text-align: center;
-  transition: box-shadow 0.3s;
+  transition: none; /* Remove a transição de hover */
   width: 100%;
 }
 
+/* Remove a interação de hover que muda a borda/posição */
 .product-card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Mantém a sombra original */
+  transform: none;
 }
 
+/* A imagem ocupa mais espaço */
 .product-card img {
   width: 100%;
-  height: 250px;
-  object-fit: contain;
+  height: auto; /* Permite que a imagem se ajuste proporcionalmente */
+  max-height: 250px; /* Limite opcional para manter uniformidade */
+  object-fit: cover;
   border-radius: 8px;
 }
 
@@ -179,17 +183,18 @@ a {
 .add-to-cart-btn {
   background-color: #f8da45;
   color: rgb(0, 0, 0);
-  padding: 12px 20px;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
-  margin-top: 15px;
-  transition: background-color 0.3s;
+  margin-top: 10px;
+  font-size: 14px;
+  transition: none;
 }
 
 .add-to-cart-btn:hover {
-  background-color: #00000000;
+  background-color: #f8da45; /* Sem efeito de hover, mantendo a cor */
 }
 
 /* Modais e carrinho */
@@ -346,33 +351,44 @@ button:hover {
 
 /* ------------------ Media Queries para Mobile ------------------ */
 @media (max-width: 768px) {
-  /* Cabeçalho fixo no topo com largura total */
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
+  /* Centraliza os títulos de categorias e subcategorias */
+  .category-title,
+  .subcategory-title {
+    text-align: center;
     width: 100%;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    z-index: 1000;
+    margin: 0 auto;
   }
-  
+
+  /* Centraliza o container dos grupos */
+  .category-section {
+    text-align: center;
+    margin: 20px auto;
+  }
+
+  /* Centraliza os cards dentro do grid */
+  .subcategory-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
   /* Navbar em formato vertical */
   .navbar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 10px;
+    padding: 10px;
     width: 100%;
   }
-  
+
   /* Logo centralizado */
   .logo {
     width: 100%;
     text-align: center;
     margin-bottom: 10px;
   }
-  
+
   /* Itens de navegação organizados em coluna (vertical) */
   .nav-links {
     display: flex;
@@ -381,7 +397,7 @@ button:hover {
     width: 100%;
     gap: 10px;
   }
-  
+
   /* Inputs e selects ocupam grande parte da largura */
   .nav-links input,
   .nav-links select {
@@ -389,17 +405,18 @@ button:hover {
     margin: 5px 0;
     font-size: 16px;
   }
-  
+
   /* Ícone do carrinho posicionado no canto superior direito do cabeçalho */
   #cart-icon {
     position: absolute;
     top: 10px;
     right: 10px;
   }
-  
+
   /* Espaço para o conteúdo principal, evitando que fique oculto pelo cabeçalho fixo */
   main {
     margin-top: 160px;
   }
 }
+  
 
