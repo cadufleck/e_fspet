@@ -29,11 +29,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 25px 30px; /* Aumenta o padding para dar mais espaço */
-  /* Ou defina uma altura mínima */
+  padding: 25px 30px;
   min-height: 100px;
 }
-
 
 .logo-img {
   height: 60px;
@@ -46,6 +44,7 @@ a {
   gap: 20px;
 }
 
+/* Inputs e selects */
 #search-input {
   padding: 12px 16px;
   border: 1px solid #ddd;
@@ -59,6 +58,7 @@ a {
   border-radius: 5px;
 }
 
+/* Carrinho */
 #cart-icon {
   position: relative;
   cursor: pointer;
@@ -84,7 +84,7 @@ a {
   align-items: center;
 }
 
-/* Cabeçalho das categorias e subcategorias */
+/* Cabeçalho de categorias e subcategorias */
 .category-header {
   background-color: #f1f1f1;
   padding: 10px 20px;
@@ -109,12 +109,13 @@ a {
 .subcategory-title {
   text-align: center;
 }
+
 .category-title h2 {
-  font-family: 'Arial', sans-serif; /* Define a fonte desejada */
-  font-size: 35px;                  /* Ajusta o tamanho da fonte */
-  color: #333;                      /* Altera a cor da fonte */
-  font-weight: bold;                /* Define a espessura da fonte */
-  text-align: center;               /* Centraliza o texto */
+  font-family: 'Arial', sans-serif;
+  font-size: 35px;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
 }
 
 .subcategory-title h3 {
@@ -125,25 +126,21 @@ a {
   text-align: center;
 }
 
-
-
 /* Grid de produtos */
 .products-grid {
   padding: 20px;
 }
 
 .category-section {
-  margin-bottom: 40px; /* Espaço entre as categorias */
+  margin-bottom: 40px;
 }
 
 .subcategory-products {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* Exibe 6 produtos por linha */
+  grid-template-columns: repeat(6, 1fr);
   gap: 15px;
   padding: 20px 0;
 }
-
-
 
 /* Cartões de produto */
 .product-card {
@@ -162,11 +159,10 @@ a {
 
 .product-card img {
   width: 100%;
-  height: 250px; /* Garantir que as imagens ocupem o mesmo espaço */
+  height: 250px;
   object-fit: contain;
   border-radius: 8px;
 }
-
 
 .product-name {
   font-size: 18px;
@@ -196,9 +192,7 @@ a {
   background-color: #00000000;
 }
 
-/* Estilização atualizada para os modais */
-
-/* Estilização dos modais (compartilhada para produto e carrinho) */
+/* Modais e carrinho */
 .modal, .cart-modal {
   display: none; 
   position: fixed; 
@@ -236,52 +230,45 @@ a {
   cursor: pointer;
 }
 
-/* Estilização dos itens do carrinho */
-/* Limite de altura e rolagem no container de itens do carrinho */
+/* Itens do carrinho */
 .cart-items {
-  max-height: 300px;      /* Ajuste a altura conforme desejado */
-  overflow-y: auto;       /* Exibe barra de rolagem quando ultrapassa a altura */
-  padding-right: 8px;     /* Espaço para a rolagem não sobrepor o texto */
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 8px;
 }
 
-/* Cada item do carrinho em linha */
 .cart-item {
   display: flex;
-  align-items: center;      /* Alinha verticalmente no centro */
+  align-items: center;
   justify-content: space-between;
   padding: 8px 0;
   border-bottom: 1px solid #ddd;
   margin-bottom: 8px;
 }
 
-/* Último item sem borda */
 .cart-item:last-child {
   border-bottom: none;
   margin-bottom: 0;
 }
 
-/* Miniatura da imagem do carrinho */
 .cart-item-thumbnail {
-  width: 80px;    /* Aumente/diminua conforme desejado */
+  width: 80px;
   height: 80px;
   object-fit: cover;
   margin-right: 10px;
 }
 
-/* Bloco com nome e preço */
 .cart-item-info {
-  flex-grow: 1;   /* Ocupa o espaço disponível */
+  flex-grow: 1;
   margin-left: 10px;
 }
 
-/* Controle de quantidade em linha */
 .quantity-controls {
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-/* Botão de remover item */
 .remove-item-btn {
   background: transparent;
   border: none;
@@ -291,19 +278,17 @@ a {
   margin-left: 10px;
 }
 
-
-
 .cart-item-thumbnail {
   width: 120px;
-  height: 120 px;
+  height: 120px;
   object-fit: contain;
   margin-right: 10px;
 }
 
 .cart-item-details {
   display: flex;
-  flex-direction: column;   /* Organiza as infos em coluna (nome, preço, etc.) */
-  flex-grow: 1;             /* Permite que o bloco de detalhes ocupe o espaço restante */
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .quantity-controls {
@@ -325,35 +310,7 @@ a {
   color: #f44336;
 }
 
-
-/* Conteúdo dos modais */
-.modal-content, .cart-modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px;
-  position: relative;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* Animação de fade-in para os modais */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* Botão de fechar para os modais */
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* (Opcional) Estilização extra para os botões dentro dos modais */
+/* Botões genéricos nos modais */
 button {
   padding: 10px 15px;
   border: none;
@@ -364,7 +321,11 @@ button {
   transition: background-color 0.3s;
 }
 
-/* Estilo para os ícones de cor nas variações */
+button:hover {
+  background-color: #45a049;
+}
+
+/* Ícones de cor para variações */
 .color-icon {
   display: inline-block;
   width: 20px;
@@ -374,7 +335,71 @@ button {
   border: 1px solid #ccc;
 }
 
-button:hover {
-  background-color: #45a049;
+/* Botão do menu inicialmente oculto em telas maiores */
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ------------------ Media Queries para Mobile ------------------ */
+@media (max-width: 768px) {
+  /* Cabeçalho fixo no topo com largura total */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+  
+  /* Navbar em formato vertical */
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px;
+    width: 100%;
+  }
+  
+  /* Logo centralizado */
+  .logo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Itens de navegação organizados em coluna (vertical) */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  /* Inputs e selects ocupam grande parte da largura */
+  .nav-links input,
+  .nav-links select {
+    width: 90%;
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  /* Ícone do carrinho posicionado no canto superior direito do cabeçalho */
+  #cart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  /* Espaço para o conteúdo principal, evitando que fique oculto pelo cabeçalho fixo */
+  main {
+    margin-top: 160px;
+  }
 }
 
