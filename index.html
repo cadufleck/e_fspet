@@ -9,11 +9,13 @@
 </head>
 <body>
   <!-- Cabeçalho fixo e menu de navegação -->
-  <header class="header">
+  <<header class="header">
     <div class="navbar">
       <div class="logo">
         <img src="images/logo.png" alt="Logo e_fspet" class="logo-img"/>
       </div>
+      <!-- Botão do menu para mobile -->
+      <button id="menu-toggle">☰</button>
       <nav class="nav-links">
         <input type="text" id="search-input" placeholder="Pesquisar produtos..." oninput="handleSearch()"/>
         <select id="category-select" onchange="handleCategoryFilter()">
@@ -30,6 +32,7 @@
       </nav>
     </div>
   </header>
+  
 
   <!-- Área principal -->
   <main>

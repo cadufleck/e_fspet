@@ -8,8 +8,15 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 document.addEventListener('DOMContentLoaded', () => {
   loadProducts();
   updateCartCount();
-  renderCart(); // Atualiza exibição do carrinho se já houver itens
+  renderCart();
+
+  // Função para alternar a exibição do menu mobile com transição
+  const menuToggle = document.getElementById('menu-toggle');
+  menuToggle.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('open');
+  });
 });
+
 
 // Carrega e parseia o CSV
 async function loadProducts() {
@@ -224,6 +231,8 @@ function renderProducts(productsArray) {
     productsGrid.appendChild(categorySection);
   });
 }
+
+
 
 // ---------------------- Modal de Produto ----------------------
 
